@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Sowmya Akkamma | Happy Birthday</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Gaegu:wght@400;700&family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-cream: #fdfaf5;
+            --soft-pink: #fdf1f2;
+            --main-pink: #f2a1b1;
+            --accent-pink: #e07a8b;
+            --text-gray: #4a4a4a;
+            --washi-tape: rgba(242, 161, 177, 0.4);
+        }
+
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            background-color: var(--bg-cream);
+            font-family: 'Gaegu', cursive;
+            color: var(--text-gray);
+            overflow-x: hidden;
+        }
+
+        .float-icon {
+            position: fixed;
+            z-index: 10;
+            font-size: 2.5rem;
+            pointer-events: none;
+            opacity: 0.5;
+            animation: floatAnim 6s ease-in-out infinite;
+        }
+
+        @keyframes floatAnim {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(15deg); }
+        }
+
+        .grand-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 100px rgba(0,0,0,0.03);
+            background-image: radial-gradient(#f0d0d5 1px, transparent 1px);
+            background-size: 30px 30px;
+            border-radius: 20px;
+        }
+
+        /* HERO SECTION */
+        .hero-grand {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: var(--soft-pink);
+            position: relative;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .hero-grand h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 6.5rem;
+            color: var(--accent-pink);
+            margin: 10px 0;
+            text-shadow: 3px 3px 0 white;
+        }
+
+        /* PHOTO WALL - with Tilts and Radius */
+        .memories-massive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            padding: 60px 40px;
+        }
+
+        .polaroid-grand {
+            background: white;
+            padding: 15px 15px 60px 15px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+            border-radius: 15px;
+            position: relative;
+            transition: 0.4s ease-in-out;
+        }
+
+        .polaroid-grand img { width: 100%; height: 380px; object-fit: cover; border-radius: 10px; }
+        
+        /* Randomized Tilts for Scrapbook Feel */
+        .polaroid-grand:nth-child(odd) { transform: rotate(-3deg); }
+        .polaroid-grand:nth-child(even) { transform: rotate(3deg); }
+        .polaroid-grand:hover { transform: rotate(0deg) scale(1.05); z-index: 10; }
+
+        .tape-grand {
+            position: absolute;
+            top: -15px; left: 50%; transform: translateX(-50%);
+            width: 110px; height: 40px;
+            background: var(--washi-tape);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.02);
+        }
+
+        /* BEAUTIFUL TIMELINE */
+        .massive-step {
+            display: flex;
+            margin-bottom: 80px;
+            align-items: center;
+            padding: 0 50px;
+        }
+        .massive-step:nth-child(even) { flex-direction: row-reverse; text-align: right; }
+        
+        .massive-content { 
+            width: 50%; 
+            padding: 30px; 
+            background: var(--soft-pink); 
+            border-radius: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+        }
+
+        .step-icon {
+            width: 90px; height: 90px;
+            background: var(--main-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 25px;
+            box-shadow: 0 0 25px rgba(242, 161, 177, 0.4);
+        }
+
+        /* GIFT REVEAL AT THE END */
+        .gift-reveal-zone {
+            padding: 100px 40px;
+            text-align: center;
+            background: white;
+        }
+
+        .envelope-btn {
+            background: var(--accent-pink);
+            color: white;
+            padding: 25px 60px;
+            border: none;
+            border-radius: 100px;
+            font-family: 'Gaegu';
+            font-size: 2.2rem;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 10px 30px rgba(224, 122, 139, 0.4);
+        }
+
+        #theLetter {
+            display: none;
+            text-align: left;
+            font-size: 1.5rem;
+            line-height: 1.8;
+            padding: 45px;
+            background: var(--bg-cream);
+            border-radius: 25px;
+            margin-top: 50px;
+            animation: fadeIn 1.2s ease-in-out;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
+        }
+
+        /* FOOTER */
+        .footer-wish {
+            text-align: center;
+            padding: 120px 40px;
+            background: var(--soft-pink);
+            border-radius: 0 0 20px 20px;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="float-icon" style="top: 10%; left: 5%;">🎂</div>
+<div class="float-icon" style="top: 30%; right: 10%; animation-delay: 2s;">🎈</div>
+<div class="float-icon" style="bottom: 20%; left: 8%; animation-delay: 4s;">🎁</div>
+<div class="float-icon" style="top: 70%; right: 5%; animation-delay: 1s;">✨</div>
+<div class="float-icon" style="bottom: 15%; right: 12%;">⭐</div>
+
+<div class="grand-wrapper">
+    <section class="hero-grand" data-aos="zoom-out">
+        <p>🎂 it's a special day! 🎂</p>
+        <h1>Happy Birthday<br> Sowmya ! 🎉</h1>
+        <p style="font-size: 1.8rem; letter-spacing: 2px; opacity: 0.8;">Scroll down, I have a story to tell you...</p>
+    </section>
+
+    <section style="padding: 120px 50px; text-align: center;" data-aos="fade-up">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="font-family: 'Dancing Script'; font-size: 4.5rem; color: var(--accent-pink);">A Connection Beyond Words 🤝</h2>
+            <p style="font-size: 1.7rem; line-height: 1.8; margin-top: 25px;">
+                Akkamma, they say brothers and sisters are born to annoy each other, but I believe we were brought together to support each other. You aren't just a friend; you've earned a place in my life where your happiness matters to me as much as my own. Thank you for being the protective, kind, and real soul you are.
+            </p>
+        </div>
+    </section>
+
+    <h2 style="text-align: center; font-family: 'Dancing Script'; font-size: 5rem; color: var(--accent-pink);">Photo Wall 📸</h2>
+    <p style="text-align: center; font-size: 1.4rem;">Princess ka little snaps!</p>
+
+    <div class="memories-massive-grid">
+        <div class="polaroid-grand" data-aos="fade-up">
+            <div class="tape-grand"></div>
+            <img src="photo1.jpg" alt="Memory">
+            <p style="text-align:center; font-size: 1.4rem; margin-top: 15px;">Capturing a purely cute moment 💕</p>
+        </div>
+        <div class="polaroid-grand" data-aos="fade-up" data-aos-delay="100">
+            <div class="tape-grand"></div>
+            <img src="photo2.jpg" alt="Memory">
+            <p style="text-align:center; font-size: 1.4rem; margin-top: 15px;">Always shining, even when she doesn't realize it 🌟</p>
+        </div>
+        <div class="polaroid-grand" data-aos="fade-up" data-aos-delay="200">
+            <div class="tape-grand"></div>
+            <img src="photo3.jpg" alt="Memory">
+            <p style="text-align:center; font-size: 1.4rem; margin-top: 15px;">That classic "don't even try to mess with me" sister look 😂</p>
+        </div>
+        <div class="polaroid-grand" data-aos="fade-up" data-aos-delay="300">
+            <div class="tape-grand"></div>
+            <img src="photo4.jpg" alt="Memory">
+            <p style="text-align:center; font-size: 1.4rem; margin-top: 15px;">The "Main Character" energy ✨🌟</p>
+        </div>
+        <div class="polaroid-grand" data-aos="fade-up" data-aos-delay="400">
+            <div class="tape-grand"></div>
+            <img src="photo5.jpg" alt="Memory">
+            <p style="text-align:center; font-size: 1.4rem; margin-top: 15px;">The brightest smile ✨</p>
+        </div>
+        <div class="polaroid-grand" data-aos="fade-up" data-aos-delay="500">
+            <div class="tape-grand"></div>
+            <img src="photo6.jpg" alt="Memory">
+            <p style="text-align:center; font-size: 1.4rem; margin-top: 15px;">A rare moment of her being actually "quiet" and cute 💕</p>
+        </div>
+    </div>
+
+    <h2 style="text-align: center; font-family: 'Dancing Script'; font-size: 5rem; color: var(--accent-pink);">Our Story So Far 📖</h2>
+    <p style="text-align: center; font-size: 1.3rem;">It's not about how long, it's about how real.</p>
+    
+    <section style="padding: 80px 0;">
+        <div class="massive-step" data-aos="fade-right">
+            <div class="step-icon">👋</div>
+            <div class="massive-content">
+                <h3 style="font-size: 2.2rem; margin-bottom: 10px;">First Conversation</h3>
+                <p style="font-size: 1.4rem;">It started simple — just a random conversation. But something clicked. You were easy to talk to and that's rare.</p>
+            </div>
+        </div>
+        <div class="massive-step" data-aos="fade-left">
+            <div class="step-icon">😎</div>
+            <div class="massive-content">
+                <h3 style="font-size: 2.2rem; margin-bottom: 10px;">Realizing You're Cool</h3>
+                <p style="font-size: 1.4rem;">The more we talked, the more I realized you're genuinely a good person. No drama, no fakeness — just real.</p>
+            </div>
+        </div>
+        <div class="massive-step" data-aos="fade-right">
+            <div class="step-icon">🌟</div>
+            <div class="massive-content">
+                <h3 style="font-size: 2.2rem; margin-bottom: 10px;">Small But Memorable</h3>
+                <p style="font-size: 1.4rem;">We may not have spent a lot of time together, but the moments we did have were solid. Quality over quantity, right?</p>
+            </div>
+        </div>
+        <div class="massive-step" data-aos="fade-left">
+            <div class="step-icon">💪</div>
+            <div class="massive-content">
+                <h3 style="font-size: 2.2rem; margin-bottom: 10px;">Respect & Support</h3>
+                <p style="font-size: 1.4rem;">You've been supportive in ways you probably don't even realize. That means a lot. Genuinely.</p>
+            </div>
+        </div>
+        <div class="massive-step" data-aos="fade-right">
+            <div class="step-icon">🎂</div>
+            <div class="massive-content">
+                <h3 style="font-size: 2.2rem; margin-bottom: 10px;">Today</h3>
+                <p style="font-size: 1.4rem;">Today's your day. Here's to more conversations, more good times, and a friendship that keeps growing. Cheers!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gift-reveal-zone">
+        <h2 style="font-family: 'Dancing Script'; font-size: 4rem; color: var(--accent-pink); margin-bottom: 40px;">One Last Surprise...</h2>
+        <button class="envelope-btn" onclick="openGift()">Open Your Gift 🎁</button>
+
+        <div id="theLetter">
+            <h2 style="font-family: 'Dancing Script'; font-size: 3rem; color: var(--accent-pink);">A Letter For You, Akkamma 💌</h2>
+            <p>Hey Akkamma,</p>
+            <p>Happy Birthday! 🎂 I know we haven't spent a ton of time together, but honestly the time we have shared has been really good. You're one of those people who just makes things better by being around.</p>
+            <p>Honestly, even though we haven't spent a lifetime together yet, you've become like a real sister to me. The bond we have is special—that classic brother-sister vibe where we might annoy each other, but I'll always have your back.
+
+You carry a strength and a kindness that most people take years to develop. You make the atmosphere better just by being in the room. I genuinely respect your vibe—no drama, no fakeness, just genuine Sowmya</p>
+            <p>You've always been real with me, and I genuinely respect that. Not everyone has that quality. You're kind, you're strong, and you don't even realize how much of an impact you have on the people around you.</p>
+            <p>I couldn't afford a fancy gift this time 😅 so I figured I'd build you something instead. Hope this little website makes you smile even a little — that's all I want.</p>
+            <p>Wishing you an amazing year ahead. You deserve great things!</p>
+            <p style="text-align: right; font-size: 2.5rem; font-family: 'Dancing Script'; color: var(--accent-pink);">Happy Birthday once again,<br>— Abhi ✌️</p>
+        </div>
+    </section>
+
+    <footer class="footer-wish">
+        <h2 style="font-family: 'Dancing Script'; font-size: 4.5rem; color: var(--accent-pink);">Have An Amazing Day, Sowmya!</h2>
+        <p style="font-size: 1.8rem; margin-bottom: 40px;">Hope this little surprise made you smile. You're a great person and you deserve all the good things coming your way. Enjoy your day! 🙌</p>
+        <div style="font-size: 3.5rem; margin-bottom: 50px;">🎂 🎈 🎁 🙌 ✨ ⭐</div>
+        <p style="opacity: 0.8; font-size: 1.3rem;">Built with effort for someone who deserves it ✌️</p>
+    </footer>
+</div>
+
+<script>
+    AOS.init({ duration: 1200, once: true });
+
+    function openGift() {
+        document.getElementById('theLetter').style.display = 'block';
+        popConfetti();
+        // Smooth scroll to the letter
+        setTimeout(() => {
+            document.getElementById('theLetter').scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+    }
+
+    function popConfetti() {
+        var duration = 5 * 1000;
+        var end = Date.now() + duration;
+        (function frame() {
+            confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#f2a1b1', '#e07a8b'] });
+            confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#f2a1b1', '#e07a8b'] });
+            if (Date.now() < end) requestAnimationFrame(frame);
+        }());
+    }
+
+    // Bang on load for that initial surprise
+    window.onload = popConfetti;
+</script>
+
+</body>
+</html>
